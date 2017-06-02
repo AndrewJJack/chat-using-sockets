@@ -1,5 +1,5 @@
 # Chat Server and Client
-Andrew Jack and Kevin Wang
+Created by Andrew Jack and Kevin Wang
 
 To make the project, run "make"
 To run the server, run "./server <port>"
