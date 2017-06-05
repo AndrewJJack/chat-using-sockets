@@ -4,7 +4,6 @@ Created by Andrew Jack and Kevin Wang
 To make the project, run "make"
 To run the server, run "./server 'port'"
 To run the client, run "./client 'hostname' 'port' 'username'"
-'port' is your IP address
 
 Client Functionality
 - type into terminal to chat
