@@ -75,7 +75,7 @@ void handleClientTimeouts(long long elapsed) {
 
 
 int main(int argc, char *argv[]) {
-  
+
   //setting up handler
   struct sigaction sigint_act;
   sigint_act.sa_handler = sigint_handler;
@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
   f = fopen(filename, "w");
 
   printf("Initializing chat server...\n");
-  
+
   // get port number
   int port = 6969;
   if (argc != 2) {
@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
     port = atoi(argv[1]);
     printf("Using port: %d\n", port);
   }
-  
+
   // initializing all of the values to 0
   int i;
   for (i = 0; i < MAX_CLIENT_COUNT; i++) {
@@ -140,7 +140,7 @@ int main(int argc, char *argv[]) {
 
   struct timeval t0, t1;
   gettimeofday(&t0, NULL);
-           
+
   printf("Chat server successfully initialized!\n");
 
   while (1) {
@@ -294,14 +294,14 @@ int main(int argc, char *argv[]) {
           write(clientlist[i].sockdesc, &msg_type, sizeof(msg_type));
           write(clientlist[i].sockdesc, &len, sizeof(len));
           write(clientlist[i].sockdesc, name, len);
-        }   
+        }
       }
-      
+
       // if everything is okay, set up a client info struct for the new client
       for (i = 0; i < MAX_CLIENT_COUNT; i++) {
         if (clientlist[i].connected == 0) {
           clientlist[i].connected = 1;
-          clientlist[i].time_left = 30 * 1000 * 1000; // 30 secs in microseconds
+          clientlist[i].time_left = 60 * 10 * 1000 * 1000; // 10 mins in microseconds
           clientlist[i].sockdesc = snew;
           strcpy(clientlist[i].name, name);
           break;
@@ -313,4 +313,3 @@ int main(int argc, char *argv[]) {
     }
   } // while
 } // main
-
